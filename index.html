@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>VUDRM - Samsung Tizen Example Application</title>
+  <script type='text/javascript' src='$WEBAPIS/webapis/webapis.js'></script>
+</head>
+
+<body>
+  <object type="application/avplayer"></object>
+
+  <script src="src/tizen-player.js"></script>
+  <script src="src/remote-control.js"></script>
+  <script>
+    const source = "https://d1chyo78gdexn4.cloudfront.net/vualto-demo/sintel/sintel.ism/manifest.mpd";
+    const drmParam = {
+      DeleteLicenseAfterUse: true,
+      LicenseServer: "https://playready-license.vudrm.tech/rightsmanager.asmx",
+      CustomData: "vualto-demo|2020-03-04T16:47:54Z|RAQrLiTYv+Z8U9LrxO0JDw==|1f62f7b5275243ed1964ac1caa73d8a1f2d679d7"
+    };
+
+    const player = loadPlayer(source, drmParam);
+    const remoteControl = new RemoteControl(player);
+
+  </script>
+</body>
+
+</html>
